@@ -1,0 +1,37 @@
+{
+  "name": "SFDC",
+  "manifest_version": 3,
+  "version": "1.0",
+  "permissions": ["cookies", "nativeMessaging", "tabs","activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.salesforce.com/*",
+        "https://*.visual.force.com/*",
+        "https://*.lightning.force.com/*",
+        "https://*.cloudforce.com/*",
+        "https://*.visualforce.com/*"
+      ],
+      "js": ["button.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "popup.html" ],
+      "matches": [ 
+        "https://*.salesforce.com/*",
+        "https://*.visual.force.com/*",
+        "https://*.lightning.force.com/*",
+        "https://*.cloudforce.com/*",
+        "https://*.visualforce.com/*"
+       ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
